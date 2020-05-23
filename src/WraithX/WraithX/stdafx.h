@@ -14,6 +14,7 @@
 #include <afxwin.h>
 #include <afxdisp.h>
 #include <afxglobals.h>
+//#include <Windows.h>
 
 // Global includes
 #include <Gdiplus.h>

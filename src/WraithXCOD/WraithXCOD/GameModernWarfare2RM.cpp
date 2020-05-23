@@ -124,7 +124,9 @@ bool GameModernWarfare2RM::LoadOffsets()
             CoDAssets::GameOffsetInfos.emplace_back(CoDAssets::GameInstance->Read<uint64_t>(BaseAddress + GameOffsets.DBAssetPools + (8 * 0x10)));
             CoDAssets::GameOffsetInfos.emplace_back(CoDAssets::GameInstance->Read<uint64_t>(BaseAddress + GameOffsets.DBAssetPools + (8 * 0x11)));
             // Verify via first xmodel asset
-            auto FirstXModelName = CoDAssets::GameInstance->ReadNullTerminatedString(CoDAssets::GameInstance->Read<uint64_t>(CoDAssets::GameOffsetInfos[1] + 8));
+            auto p = CoDAssets::GameOffsetInfos[1];
+            auto c = CoDAssets::GameInstance->Read<uint64_t>(CoDAssets::GameOffsetInfos[1] + 8);
+            auto FirstXModelName = CoDAssets::GameInstance->ReadNullTerminatedString(c);
             // Check
             if (FirstXModelName == "fx")
             {
@@ -173,7 +175,10 @@ bool GameModernWarfare2RM::LoadOffsets()
             CoDAssets::GameOffsetInfos.emplace_back(CoDAssets::GameInstance->Read<uint64_t>(GameOffsets.DBAssetPools + (8 * 0x10)));
             CoDAssets::GameOffsetInfos.emplace_back(CoDAssets::GameInstance->Read<uint64_t>(GameOffsets.DBAssetPools + (8 * 0x11)));
             // Verify via first xmodel asset
-            auto FirstXModelName = CoDAssets::GameInstance->ReadNullTerminatedString(CoDAssets::GameInstance->Read<uint64_t>(CoDAssets::GameOffsetInfos[1] + 8));
+
+            auto p = CoDAssets::GameOffsetInfos[1];
+            auto c = CoDAssets::GameInstance->Read<uint64_t>(CoDAssets::GameOffsetInfos[1] + 8);
+        	auto FirstXModelName = CoDAssets::GameInstance->ReadNullTerminatedString(c);
             // Check
             if (FirstXModelName == "fx")
             {
